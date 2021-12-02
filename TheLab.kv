@@ -1,27 +1,46 @@
-MainWidget:
-#BoxLayoutExample:
+#MainWidget:
+BoxLayoutExample:
 
 <BoxLayoutExample>:
-    #orientation: "vertical"
-    Button:
-        text: "A"
+    orientation: "vertical"
 
-        size_hint: .5, .5
-        #size_hint: .4, None
-        #pos_hint: { "center_x": .5}
-        pos_hint: { "center_y": .5 }
-    Button:
-        text: "B"
-    Label:
-        text: "C"
+
+
+    #Button:
+     #   text: "A"
+      #  background_color: (2.0,0.0,0.0,1.0)
+        #size_hint: 1, 0.2
+       # size_hint: .4, None
+        #pos_hint: { "center_x": 0.3}
+        #pos_hint: { "center_y": 0 }
+
+    BoxLayout:
+        Button:
+            text: "B"
+        Button:
+            text: "B1"
+        Button:
+            text: "B2"
+        Button:
+            text: "B3"
+    BoxLayout:
+        Button:
+            text: "C"
+        Button:
+            text: "C1"
+        Button:
+            text: "C2"
+        Button:
+            text: "C3"
+
 
 
 
 <MainWidget>:
     Button:
         text:"Hello"
-        size: "200dp", "50dp"
-        pos: "300dp", "300dp"
+        size: "250dp", "80dp"
+        pos: 100,100
         color: 1, 1, 0, 1
     Label:
         text:"Hello"
