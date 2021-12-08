@@ -1,37 +1,132 @@
 #MainWidget:
 BoxLayoutExample:
+#BoxLayout:
+#BoxLayoutSequencer:
+
+<BoxLayoutSequencer>:
+    FloatLayout:
+        Label:
+            markup: True
+            text: "[font=Minecraft][b]This is the top[/b][/font]"
+            font_size: 32
+            size_hint: (0.3,0.2)
+            pos_hint: {"center_x": 0.20}
+            pos_hint: {"center_y": 0.895}
+
+    GridLayout:
+        cols: 1
+        Button:
+            markup: True
+            text: "[font=Minecraft]Base Drum[/font]"
+            font_size: 20
+        Button:
+            markup: True
+            text: "[font=Minecraft]Snare Drum[/font]"
+            font_size: 20
+
+
+
+
+
+
 
 <BoxLayoutExample>:
     orientation: "vertical"
-
-
-
-    #Button:
-     #   text: "A"
-      #  background_color: (2.0,0.0,0.0,1.0)
-        #size_hint: 1, 0.2
-       # size_hint: .4, None
-        #pos_hint: { "center_x": 0.3}
-        #pos_hint: { "center_y": 0 }
+    BoxLayout:
+        orientation: "horizontal"
+        padding: "10dp"
+        Label:
+            markup: True
+            text: "[font=Minecraft][b]Music Master[/b][/font]"
+            font_size: 30
+            pos_hint: { "y": 0.7 }
+            size_hint: (1,0.3)
+            canvas.before:
+                Color:
+                    rgb: 0.8, 0.8, 0.8
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+    BoxLayout:
+        orientation: "horizontal"
+        spacing: "10dp"
+        padding: "10dp"
+        Label:
+            text: 'Bass'
+            size_hint: (1,0)
+            canvas.before:
+                Color:
+                    rgb: 0.8, 0, 0
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+        Button:
+            text: 'p1'
+            size_hint: (1,0)
+        Button:
+            text: 'p1'
+            size_hint: (1,0)
+        Button:
+            text: 'p1'
+            size_hint: (1,0)
+        Button:
+            text: 'p1'
+            size_hint: (1,0)
 
     BoxLayout:
+        size_hint_y: 0.7
+        orientation: "horizontal"
+        spacing: "10dp"
+        padding: "10dp"
+        Label:
+            text: 'Bass'
+            size_hint: (1,0)
+            canvas.before:
+                Color:
+                    rgb: 0.8, 0, 0
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
         Button:
-            text: "B"
+            text: 'p1'
+            size_hint: (1,0)
         Button:
-            text: "B1"
+            text: 'p1'
+            size_hint: (1,0)
         Button:
-            text: "B2"
+            text: 'p1'
+            size_hint: (1,0)
         Button:
-            text: "B3"
+            text: 'p1'
+            size_hint: (1,0)
     BoxLayout:
+        size_hint_y: 0.7
+        orientation: "horizontal"
+        spacing: "10dp"
+        padding: "10dp"
+        Label:
+            text: 'Bass'
+            size_hint: (1,0)
+            canvas.before:
+                Color:
+                    rgb: 0.8, 0, 0
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
         Button:
-            text: "C"
+            text: 'p1'
+            size_hint: (1,0)
         Button:
-            text: "C1"
+            text: 'p1'
+            size_hint: (1,0)
         Button:
-            text: "C2"
+            text: 'p1'
+            size_hint: (1,0)
         Button:
-            text: "C3"
+            text: 'p1'
+            size_hint: (1,0)
+
+
 
 
 
