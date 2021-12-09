@@ -47,12 +47,67 @@ BoxLayoutExample:
                 Rectangle:
                     pos: self.pos
                     size: self.size
+    FloatLayout:
+        #orientation: "horizontal"
+        Label:
+            text: 'Tempo'
+            size_hint: (.18, .3)
+            pos_hint: {'x':.01, 'y':.0}
+
+            canvas.before:
+                Color:
+                    rgb: 0.8, 0., 0.
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+        Label:
+            text: 'hi'
+            size_hint: (.18, .3)
+            pos_hint: {'x':.21, 'y':.0}
+
+            canvas.before:
+                Color:
+                    rgb: 0.8, 0.8, 0.8
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+        Label:
+            text: 'hi'
+            size_hint: (.18, .3)
+            pos_hint: {'x':.41, 'y':.0}
+            canvas.before:
+                Color:
+                    rgb: 0.8, 0.8, 0.8
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+        Label:
+            text: 'hi'
+            size_hint: (.18, .3)
+            pos_hint: {'x':.61, 'y':.0}
+            canvas.before:
+                Color:
+                    rgb: 0.8, 0.8, 0.8
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+        Label:
+            text: 'hi'
+            size_hint: (.18, .3)
+            pos_hint: {'x':.81, 'y':.0}
+            canvas.before:
+                Color:
+                    rgb: 0.8, 0.8, 0.8
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
     BoxLayout:
         orientation: "horizontal"
         spacing: "10dp"
         padding: "10dp"
         Label:
             text: 'Bass'
+            font_size: 25
             size_hint: (1,0)
             canvas.before:
                 Color:
@@ -62,15 +117,20 @@ BoxLayoutExample:
                     size: self.size
         Button:
             text: 'p1'
+            font_size: 25
+            size_hint: (1,0)
+            on_press: say_hello
+        Button:
+            text: 'p1'
+            font_size: 25
             size_hint: (1,0)
         Button:
             text: 'p1'
+            font_size: 25
             size_hint: (1,0)
         Button:
             text: 'p1'
-            size_hint: (1,0)
-        Button:
-            text: 'p1'
+            font_size: 25
             size_hint: (1,0)
 
     BoxLayout:
@@ -80,6 +140,7 @@ BoxLayoutExample:
         padding: "10dp"
         Label:
             text: 'Bass'
+            font_size: 25
             size_hint: (1,0)
             canvas.before:
                 Color:
@@ -89,15 +150,19 @@ BoxLayoutExample:
                     size: self.size
         Button:
             text: 'p1'
+            font_size: 25
             size_hint: (1,0)
         Button:
             text: 'p1'
+            font_size: 25
             size_hint: (1,0)
         Button:
             text: 'p1'
+            font_size: 25
             size_hint: (1,0)
         Button:
             text: 'p1'
+            font_size: 25
             size_hint: (1,0)
     BoxLayout:
         size_hint_y: 0.7
@@ -106,6 +171,7 @@ BoxLayoutExample:
         padding: "10dp"
         Label:
             text: 'Bass'
+            font_size: 25
             size_hint: (1,0)
             canvas.before:
                 Color:
@@ -115,15 +181,19 @@ BoxLayoutExample:
                     size: self.size
         Button:
             text: 'p1'
+            font_size: 25
             size_hint: (1,0)
         Button:
             text: 'p1'
+            font_size: 25
             size_hint: (1,0)
         Button:
             text: 'p1'
+            font_size: 25
             size_hint: (1,0)
         Button:
             text: 'p1'
+            font_size: 25
             size_hint: (1,0)
 
 

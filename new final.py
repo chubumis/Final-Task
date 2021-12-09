@@ -9,14 +9,22 @@ yellow = 255,140,0
 gold = 211, 175, 55
 orange = 255,165,0
 white = 255, 255, 255
+width = 62
+height = 80
+
 screen = pygame.display.set_mode((display_w, display_h))
 #pictures
 bassDrum = pygame.image.load("bassDrum.png")
+
 gameState = 'game'
 
 def musicRooms():
+    x = 220
+    y = 230
+    bassR1 = [1,2,3,4]
+    mousePos = pygame.mouse.get_pos()
     if gameState == 'game':
-        screen.fill((100, 25, 100))
+        screen.fill(white)
         tempoBar_1 = pygame.draw.rect(screen, black, pygame.Rect(222,150, 62,25))
         tempoBar_2 = pygame.draw.rect(screen, black, pygame.Rect(288,150, 62,25))
         tempoBar_3 = pygame.draw.rect(screen, black, pygame.Rect(354,150, 62,25))
@@ -34,11 +42,26 @@ def musicRooms():
         tempoBar_15 = pygame.draw.rect(screen, black, pygame.Rect(1176,150, 62,25))
         tempoBar_16 = pygame.draw.rect(screen, black, pygame.Rect(1242,150, 62,25))
         bassBar = pygame.draw.rect(screen, light_red, pygame.Rect(30,230, 170,80))
+        #bassBar1 = pygame.rect((30,230, 170,80))
+        #bassR1B1 = pygame.draw.rect(screen, black, pygame.Rect(220,230, width,height))
+        bass4 = [(x,y,width,height),(x+66,y,width,height),(x+132,y,width,height),(x+198,y,width,height)]
+
+
         snareBar = pygame.draw.rect(screen, black, pygame.Rect(30,330, 170,80))
         highHatBar = pygame.draw.rect(screen, black, pygame.Rect(30,430, 170,80))
         openHighBar = pygame.draw.rect(screen, black, pygame.Rect(30,530, 170,80))
         tombBar = pygame.draw.rect(screen, black, pygame.Rect(30,630, 170,80))
         screen.blit(bassDrum, (90,250))
+
+        for i in range(4):
+            pygame.draw.rect(screen,black,bass4[i])
+
+        if pygame.Rect.collidepoint(bass4, mousePos):
+            print('hi')
+
+
+
+
         pygame.display.flip()
 
 while True:

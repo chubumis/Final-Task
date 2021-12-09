@@ -19,17 +19,11 @@ Window.clearcolor = (0.5,0,1,1)
             '''
 
 class BoxLayoutExample(BoxLayout):
-    pass
-'''
-    def __init__(self,**kwargs)
-        super().__init__(**kwargs)
-        self.orientation = "vertical"
-        b1 = Button(text="A")
-        b2 = Button(text="B")
-        self.add_widget(b1)
-        self.add_widget(b2)
-        
-'''
+    def __init__(self, **kwargs):
+        super(BoxLayoutExample, self).__init__(**kwargs)
+
+    def say_hello(self):
+        print 'hello'
 
 class BoxLayoutSequencer(FloatLayout):
     pass
