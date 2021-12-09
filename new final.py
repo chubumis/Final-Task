@@ -8,9 +8,15 @@ black = 0, 0, 0
 yellow = 255,140,0
 gold = 211, 175, 55
 orange = 255,165,0
+purple = 159, 43, 104
 white = 255, 255, 255
+purple1 = 159, 43, 104
+purple2 = 159, 43, 104
+purple3 = 159, 43, 104
+purple4 = 159, 43, 104
 width = 62
 height = 80
+
 
 screen = pygame.display.set_mode((display_w, display_h))
 #pictures
@@ -19,45 +25,71 @@ bassDrum = pygame.image.load("bassDrum.png")
 gameState = 'game'
 
 def musicRooms():
+    global purple
+    global purple1
+    global purple2
+    global purple3
+    global purple4
+    global clicked
+
+
     x = 220
     y = 230
     bassR1 = [1,2,3,4]
     mousePos = pygame.mouse.get_pos()
     if gameState == 'game':
-        screen.fill(white)
-        tempoBar_1 = pygame.draw.rect(screen, black, pygame.Rect(222,150, 62,25))
-        tempoBar_2 = pygame.draw.rect(screen, black, pygame.Rect(288,150, 62,25))
-        tempoBar_3 = pygame.draw.rect(screen, black, pygame.Rect(354,150, 62,25))
-        tempoBar_4 = pygame.draw.rect(screen, black, pygame.Rect(420,150, 62,25))
-        tempoBar_5 = pygame.draw.rect(screen, black, pygame.Rect(496,150, 62,25))
-        tempoBar_6 = pygame.draw.rect(screen, black, pygame.Rect(562,150, 62,25))
-        tempoBar_7 = pygame.draw.rect(screen, black, pygame.Rect(628,150, 62,25))
-        tempoBar_8 = pygame.draw.rect(screen, black, pygame.Rect(694,150, 62,25))
-        tempoBar_9 = pygame.draw.rect(screen, black, pygame.Rect(770,150, 62,25))
-        tempoBar_10 = pygame.draw.rect(screen, black, pygame.Rect(836,150, 62,25))
-        tempoBar_11 = pygame.draw.rect(screen, black, pygame.Rect(902,150, 62,25))
-        tempoBar_12 = pygame.draw.rect(screen, black, pygame.Rect(968,150, 62,25))
-        tempoBar_13 = pygame.draw.rect(screen, black, pygame.Rect(1044,150, 62,25))
-        tempoBar_14 = pygame.draw.rect(screen, black, pygame.Rect(1110,150, 62,25))
-        tempoBar_15 = pygame.draw.rect(screen, black, pygame.Rect(1176,150, 62,25))
-        tempoBar_16 = pygame.draw.rect(screen, black, pygame.Rect(1242,150, 62,25))
-        bassBar = pygame.draw.rect(screen, light_red, pygame.Rect(30,230, 170,80))
+        screen.fill(black)
+        tempoBar_1 = pygame.draw.rect(screen, purple, pygame.Rect(222,150, 62,25))
+        tempoBar_2 = pygame.draw.rect(screen, purple, pygame.Rect(288,150, 62,25))
+        tempoBar_3 = pygame.draw.rect(screen, purple, pygame.Rect(354,150, 62,25))
+        tempoBar_4 = pygame.draw.rect(screen, purple, pygame.Rect(420,150, 62,25))
+        tempoBar_5 = pygame.draw.rect(screen, purple, pygame.Rect(496,150, 62,25))
+        tempoBar_6 = pygame.draw.rect(screen, purple, pygame.Rect(562,150, 62,25))
+        tempoBar_7 = pygame.draw.rect(screen, purple, pygame.Rect(628,150, 62,25))
+        tempoBar_8 = pygame.draw.rect(screen, purple, pygame.Rect(694,150, 62,25))
+        tempoBar_9 = pygame.draw.rect(screen, purple, pygame.Rect(770,150, 62,25))
+        tempoBar_10 = pygame.draw.rect(screen, purple, pygame.Rect(836,150, 62,25))
+        tempoBar_11 = pygame.draw.rect(screen, purple, pygame.Rect(902,150, 62,25))
+        tempoBar_12 = pygame.draw.rect(screen, purple, pygame.Rect(968,150, 62,25))
+        tempoBar_13 = pygame.draw.rect(screen, purple, pygame.Rect(1044,150, 62,25))
+        tempoBar_14 = pygame.draw.rect(screen, purple, pygame.Rect(1110,150, 62,25))
+        tempoBar_15 = pygame.draw.rect(screen, purple, pygame.Rect(1176,150, 62,25))
+        tempoBar_16 = pygame.draw.rect(screen, purple, pygame.Rect(1242,150, 62,25))
+        bassBar = pygame.draw.rect(screen, purple, pygame.Rect(30,230, 170,80))
         #bassBar1 = pygame.rect((30,230, 170,80))
-        #bassR1B1 = pygame.draw.rect(screen, black, pygame.Rect(220,230, width,height))
+        #bassR1B1 = pygame.draw.rect(screen, purple, pygame.Rect(220,230, width,height))
         bass4 = [(x,y,width,height),(x+66,y,width,height),(x+132,y,width,height),(x+198,y,width,height)]
+        bass8 = [(x+274,y,width,height),(x+340,y,width,height),(x+406,y,width,height),(x+472,y,width,height)]
+        bass12 = [(x+548,y,width,height),(x+614,y,width,height),(x+680,y,width,height),(x+746,y,width,height)]
+        bass16 = [(x+822,y,width,height),(x+888,y,width,height),(x+954,y,width,height),(x+1020,y,width,height)]
 
 
-        snareBar = pygame.draw.rect(screen, black, pygame.Rect(30,330, 170,80))
-        highHatBar = pygame.draw.rect(screen, black, pygame.Rect(30,430, 170,80))
-        openHighBar = pygame.draw.rect(screen, black, pygame.Rect(30,530, 170,80))
-        tombBar = pygame.draw.rect(screen, black, pygame.Rect(30,630, 170,80))
+        snareBar = pygame.draw.rect(screen, purple, pygame.Rect(30,330, 170,80))
+        highHatBar = pygame.draw.rect(screen, purple, pygame.Rect(30,430, 170,80))
+        openHighBar = pygame.draw.rect(screen, purple, pygame.Rect(30,530, 170,80))
+        tombBar = pygame.draw.rect(screen, purple, pygame.Rect(30,630, 170,80))
         screen.blit(bassDrum, (90,250))
 
         for i in range(4):
-            pygame.draw.rect(screen,black,bass4[i])
+            pygame.draw.rect(screen,purple1,bass4[i])
+            pygame.draw.rect(screen,purple2,bass8[i])
+            pygame.draw.rect(screen,purple3,bass12[i])
+            pygame.draw.rect(screen,purple4,bass16[i])
 
-        if pygame.Rect.collidepoint(bass4, mousePos):
-            print('hi')
+        #if event.type == pygame.MOUSEMOTION:
+            #time.sleep(0.2)
+
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            mouse_pos = pygame.mouse.get_pos()
+            if mouse_pos[0] in list(range(220, 280)) and mouse_pos[1] in list(range(230, 310)):
+                time.sleep(0.2)
+                if purple1 == (159, 43, 104):
+                    purple1 = 0, 43, 104
+                elif purple1 == (0, 43, 104):
+                    purple1 = 159, 43, 104
+
+
+
 
 
 
@@ -72,6 +104,7 @@ while True:
     print(pygame.mouse.get_pos())
     musicRooms()
     pygame.display.flip()
+
 
 pygame.quit()
 quit()
