@@ -14,9 +14,14 @@ purple1 = 159, 43, 104
 purple2 = 159, 43, 104
 purple3 = 159, 43, 104
 purple4 = 159, 43, 104
-purpleL = [(159, 43, 104),(159, 43, 104),(159, 43, 104),(159, 43, 104),(159, 43, 104),(159, 43, 104),(159, 43, 104),(159, 43, 104),(159, 43, 104),(159, 43, 104),(159, 43, 104),(159, 43, 104)]
+purpleL = [(159, 43, 104),(159, 43, 104),(159, 43, 104),(159, 43, 104)]
+purpleL1 = [(159, 43, 104),(159, 43, 104),(159, 43, 104),(159, 43, 104)]
+purpleL2 = [(159, 43, 104),(159, 43, 104),(159, 43, 104),(159, 43, 104)]
+
+magenta = 255,0,255
 width = 62
 height = 80
+timer = 0
 
 
 screen = pygame.display.set_mode((display_w, display_h))
@@ -32,6 +37,8 @@ def musicRooms():
     global purple3
     global purple4
     global clicked
+    global i
+
 
 
     x = 220
@@ -56,38 +63,41 @@ def musicRooms():
         tempoBar_14 = pygame.draw.rect(screen, purple, pygame.Rect(1110,150, 62,25))
         tempoBar_15 = pygame.draw.rect(screen, purple, pygame.Rect(1176,150, 62,25))
         tempoBar_16 = pygame.draw.rect(screen, purple, pygame.Rect(1242,150, 62,25))
+
         bassBar = pygame.draw.rect(screen, purple, pygame.Rect(30,230, 170,80))
-        #bassBar1 = pygame.rect((30,230, 170,80))
-        #bassR1B1 = pygame.draw.rect(screen, purple, pygame.Rect(220,230, width,height))
         bass4 = [(x,y,width,height),(x+66,y,width,height),(x+132,y,width,height),(x+198,y,width,height)]
         bass8 = [(x+274,y,width,height),(x+340,y,width,height),(x+406,y,width,height),(x+472,y,width,height)]
         bass12 = [(x+548,y,width,height),(x+614,y,width,height),(x+680,y,width,height),(x+746,y,width,height)]
         bass16 = [(x+822,y,width,height),(x+888,y,width,height),(x+954,y,width,height),(x+1020,y,width,height)]
 
         snareBar = pygame.draw.rect(screen, purple, pygame.Rect(30,330, 170,80))
+        snare4 = [(x,y,width,height),(x+66,y,width,height),(x+132,y,width,height),(x+198,y,width,height)]
+        snare8 = [(x+274,y,width,height),(x+340,y,width,height),(x+406,y,width,height),(x+472,y,width,height)]
+        snare12 = [(x+548,y,width,height),(x+614,y,width,height),(x+680,y,width,height),(x+746,y,width,height)]
+        snare16 = [(x+822,y,width,height),(x+888,y,width,height),(x+954,y,width,height),(x+1020,y,width,height)]
+
         highHatBar = pygame.draw.rect(screen, purple, pygame.Rect(30,430, 170,80))
         openHighBar = pygame.draw.rect(screen, purple, pygame.Rect(30,530, 170,80))
         tombBar = pygame.draw.rect(screen, purple, pygame.Rect(30,630, 170,80))
         screen.blit(bassDrum, (90,250))
 
+        pygame.draw.rect(screen,purple1,bass4[0])
+        pygame.draw.rect(screen,purple2,bass4[1])
+        pygame.draw.rect(screen,purple3,bass4[2])
+        pygame.draw.rect(screen,purple4,bass4[3])
+
         for i in range(4):
-            pygame.draw.rect(screen,purple1,bass4[0])
-            pygame.draw.rect(screen,purple2,bass4[1])
-            pygame.draw.rect(screen,purple3,bass4[2])
-            pygame.draw.rect(screen,purple4,bass4[3])
-            pygame.draw.rect(screen,purpleL[0],bass8[0])
-            pygame.draw.rect(screen,purpleL[1],bass8[1])
-            pygame.draw.rect(screen,purpleL[2],bass8[2])
-            pygame.draw.rect(screen,purpleL[3],bass8[3])
-            pygame.draw.rect(screen,purpleL[4],bass12[0])
-            pygame.draw.rect(screen,purpleL[5],bass12[1])
-            pygame.draw.rect(screen,purpleL[6],bass12[2])
-            pygame.draw.rect(screen,purpleL[7],bass12[3])
-            pygame.draw.rect(screen,purple4,bass16[i])
+            pygame.draw.rect(screen,purpleL[i],bass8[i])
+        for i in range(4):
+            pygame.draw.rect(screen,purpleL1[i],bass12[i])
+        for i in range(4):
+            pygame.draw.rect(screen,purpleL2[i],bass16[i])
+
 
         #if event.type == pygame.MOUSEMOTION:
             #time.sleep(0.2)
-
+        timer =+1
+        print(timer)
         if event.type == pygame.MOUSEBUTTONDOWN:
             mouse_pos = pygame.mouse.get_pos()
             if mouse_pos[0] in list(range(220, 280)) and mouse_pos[1] in list(range(230, 310)):
@@ -142,29 +152,53 @@ def musicRooms():
 
             if mouse_pos[0] in list(range(220+548, 280+548)) and mouse_pos[1] in list(range(230, 310)):
                 time.sleep(0.2)
-                if purpleL[4] == (159, 43, 104):
-                    purpleL[4] = 0, 43, 104
-                elif purpleL[4] == (0, 43, 104):
-                    purpleL[4] = 159, 43, 104
+                if purpleL1[0] == (159, 43, 104):
+                    purpleL1[0] = 0, 43, 104
+                elif purpleL1[0] == (0, 43, 104):
+                    purpleL1[0] = 159, 43, 104
             if mouse_pos[0] in list(range(220+614, 280+614)) and mouse_pos[1] in list(range(230, 310)):
                 time.sleep(0.2)
-                if purpleL[5] == (159, 43, 104):
-                    purpleL[5] = 0, 43, 104
-                elif purpleL[5] == (0, 43, 104):
-                    purpleL[5] = 159, 43, 104
+                if purpleL1[1] == (159, 43, 104):
+                    purpleL1[1] = 0, 43, 104
+                elif purpleL1[1] == (0, 43, 104):
+                    purpleL1[1] = 159, 43, 104
             if mouse_pos[0] in list(range(220+680, 280+680)) and mouse_pos[1] in list(range(230, 310)):
                 time.sleep(0.2)
-                if purpleL[6] == (159, 43, 104):
-                    purpleL[6] = 0, 43, 104
-                elif purpleL[6] == (0, 43, 104):
-                    purpleL[6] = 159, 43, 104
+                if purpleL1[2] == (159, 43, 104):
+                    purpleL1[2] = 0, 43, 104
+                elif purpleL1[2] == (0, 43, 104):
+                    purpleL1[2] = 159, 43, 104
             if mouse_pos[0] in list(range(220+746, 280+746)) and mouse_pos[1] in list(range(230, 310)):
                 time.sleep(0.2)
-                if purpleL[7] == (159, 43, 104):
-                    purpleL[7] = 0, 43, 104
-                elif purpleL[7] == (0, 43, 104):
-                    purpleL[7] = 159, 43, 104
+                if purpleL1[3] == (159, 43, 104):
+                    purpleL1[3] = 0, 43, 104
+                elif purpleL1[3] == (0, 43, 104):
+                    purpleL1[3] = 159, 43, 104
 
+            if mouse_pos[0] in list(range(220+822, 280+822)) and mouse_pos[1] in list(range(230, 310)):
+                time.sleep(0.2)
+                if purpleL2[0] == (159, 43, 104):
+                    purpleL2[0] = 0, 43, 104
+                elif purpleL2[0] == (0, 43, 104):
+                    purpleL2[0] = 159, 43, 104
+            if mouse_pos[0] in list(range(220+888, 280+888)) and mouse_pos[1] in list(range(230, 310)):
+                time.sleep(0.2)
+                if purpleL2[1] == (159, 43, 104):
+                    purpleL2[1] = 0, 43, 104
+                elif purpleL2[1] == (0, 43, 104):
+                    purpleL2[1] = 159, 43, 104
+            if mouse_pos[0] in list(range(220+954, 280+954)) and mouse_pos[1] in list(range(230, 310)):
+                time.sleep(0.2)
+                if purpleL2[2] == (159, 43, 104):
+                    purpleL2[2] = 0, 43, 104
+                elif purpleL2[2] == (0, 43, 104):
+                    purpleL2[2] = 159, 43, 104
+            if mouse_pos[0] in list(range(220+1020, 280+1020)) and mouse_pos[1] in list(range(230, 310)):
+                time.sleep(0.2)
+                if purpleL2[3] == (159, 43, 104):
+                    purpleL2[3] = 0, 43, 104
+                elif purpleL2[3] == (0, 43, 104):
+                    purpleL2[3] = 159, 43, 104
 
 
 
@@ -175,6 +209,7 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
+
     print(pygame.mouse.get_pos())
     musicRooms()
     pygame.display.flip()
