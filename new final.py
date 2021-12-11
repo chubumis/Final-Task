@@ -14,6 +14,7 @@ purple1 = 159, 43, 104
 purple2 = 159, 43, 104
 purple3 = 159, 43, 104
 purple4 = 159, 43, 104
+purpleL = [(159, 43, 104),(159, 43, 104),(159, 43, 104),(159, 43, 104),(159, 43, 104),(159, 43, 104),(159, 43, 104),(159, 43, 104),(159, 43, 104),(159, 43, 104),(159, 43, 104),(159, 43, 104)]
 width = 62
 height = 80
 
@@ -63,7 +64,6 @@ def musicRooms():
         bass12 = [(x+548,y,width,height),(x+614,y,width,height),(x+680,y,width,height),(x+746,y,width,height)]
         bass16 = [(x+822,y,width,height),(x+888,y,width,height),(x+954,y,width,height),(x+1020,y,width,height)]
 
-
         snareBar = pygame.draw.rect(screen, purple, pygame.Rect(30,330, 170,80))
         highHatBar = pygame.draw.rect(screen, purple, pygame.Rect(30,430, 170,80))
         openHighBar = pygame.draw.rect(screen, purple, pygame.Rect(30,530, 170,80))
@@ -71,9 +71,18 @@ def musicRooms():
         screen.blit(bassDrum, (90,250))
 
         for i in range(4):
-            pygame.draw.rect(screen,purple1,bass4[i])
-            pygame.draw.rect(screen,purple2,bass8[i])
-            pygame.draw.rect(screen,purple3,bass12[i])
+            pygame.draw.rect(screen,purple1,bass4[0])
+            pygame.draw.rect(screen,purple2,bass4[1])
+            pygame.draw.rect(screen,purple3,bass4[2])
+            pygame.draw.rect(screen,purple4,bass4[3])
+            pygame.draw.rect(screen,purpleL[0],bass8[0])
+            pygame.draw.rect(screen,purpleL[1],bass8[1])
+            pygame.draw.rect(screen,purpleL[2],bass8[2])
+            pygame.draw.rect(screen,purpleL[3],bass8[3])
+            pygame.draw.rect(screen,purpleL[4],bass12[0])
+            pygame.draw.rect(screen,purpleL[5],bass12[1])
+            pygame.draw.rect(screen,purpleL[6],bass12[2])
+            pygame.draw.rect(screen,purpleL[7],bass12[3])
             pygame.draw.rect(screen,purple4,bass16[i])
 
         #if event.type == pygame.MOUSEMOTION:
@@ -87,9 +96,74 @@ def musicRooms():
                     purple1 = 0, 43, 104
                 elif purple1 == (0, 43, 104):
                     purple1 = 159, 43, 104
+            if mouse_pos[0] in list(range(220+66, 280+66)) and mouse_pos[1] in list(range(230, 310)):
+                time.sleep(0.2)
+                if purple2 == (159, 43, 104):
+                    purple2 = 0, 43, 104
+                elif purple2 == (0, 43, 104):
+                    purple2 = 159, 43, 104
+            if mouse_pos[0] in list(range(220+132, 280+132)) and mouse_pos[1] in list(range(230, 310)):
+                time.sleep(0.2)
+                if purple3 == (159, 43, 104):
+                    purple3 = 0, 43, 104
+                elif purple3 == (0, 43, 104):
+                    purple3 = 159, 43, 104
+            if mouse_pos[0] in list(range(220+198, 280+198)) and mouse_pos[1] in list(range(230, 310)):
+                time.sleep(0.2)
+                if purple4 == (159, 43, 104):
+                    purple4 = 0, 43, 104
+                elif purple4 == (0, 43, 104):
+                    purple4 = 159, 43, 104
 
+            if mouse_pos[0] in list(range(220+274, 280+274)) and mouse_pos[1] in list(range(230, 310)):
+                time.sleep(0.2)
+                if purpleL[0] == (159, 43, 104):
+                    purpleL[0] = 0, 43, 104
+                elif purpleL[0] == (0, 43, 104):
+                    purpleL[0] = 159, 43, 104
+            if mouse_pos[0] in list(range(220+340, 280+340)) and mouse_pos[1] in list(range(230, 310)):
+                time.sleep(0.2)
+                if purpleL[1] == (159, 43, 104):
+                    purpleL[1] = 0, 43, 104
+                elif purpleL[1] == (0, 43, 104):
+                    purpleL[1] = 159, 43, 104
+            if mouse_pos[0] in list(range(220+406, 280+406)) and mouse_pos[1] in list(range(230, 310)):
+                time.sleep(0.2)
+                if purpleL[2] == (159, 43, 104):
+                    purpleL[2] = 0, 43, 104
+                elif purpleL[2] == (0, 43, 104):
+                    purpleL[2] = 159, 43, 104
+            if mouse_pos[0] in list(range(220+472, 280+472)) and mouse_pos[1] in list(range(230, 310)):
+                time.sleep(0.2)
+                if purpleL[3] == (159, 43, 104):
+                    purpleL[3] = 0, 43, 104
+                elif purpleL[3] == (0, 43, 104):
+                    purpleL[3] = 159, 43, 104
 
-
+            if mouse_pos[0] in list(range(220+548, 280+548)) and mouse_pos[1] in list(range(230, 310)):
+                time.sleep(0.2)
+                if purpleL[4] == (159, 43, 104):
+                    purpleL[4] = 0, 43, 104
+                elif purpleL[4] == (0, 43, 104):
+                    purpleL[4] = 159, 43, 104
+            if mouse_pos[0] in list(range(220+614, 280+614)) and mouse_pos[1] in list(range(230, 310)):
+                time.sleep(0.2)
+                if purpleL[5] == (159, 43, 104):
+                    purpleL[5] = 0, 43, 104
+                elif purpleL[5] == (0, 43, 104):
+                    purpleL[5] = 159, 43, 104
+            if mouse_pos[0] in list(range(220+680, 280+680)) and mouse_pos[1] in list(range(230, 310)):
+                time.sleep(0.2)
+                if purpleL[6] == (159, 43, 104):
+                    purpleL[6] = 0, 43, 104
+                elif purpleL[6] == (0, 43, 104):
+                    purpleL[6] = 159, 43, 104
+            if mouse_pos[0] in list(range(220+746, 280+746)) and mouse_pos[1] in list(range(230, 310)):
+                time.sleep(0.2)
+                if purpleL[7] == (159, 43, 104):
+                    purpleL[7] = 0, 43, 104
+                elif purpleL[7] == (0, 43, 104):
+                    purpleL[7] = 159, 43, 104
 
 
 
