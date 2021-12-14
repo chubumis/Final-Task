@@ -19,7 +19,10 @@ purpleL = [(159, 43, 104),(159, 43, 104),(159, 43, 104),(159, 43, 104)]
 purpleL1 = [(159, 43, 104),(159, 43, 104),(159, 43, 104),(159, 43, 104)]
 purpleL2 = [(159, 43, 104),(159, 43, 104),(159, 43, 104),(159, 43, 104)]
 tempPurp = [(255,127,80),(255,127,80),(255,127,80),(255,127,80),(255,127,80),(255,127,80),(255,127,80),(255,127,80),(255,127,80),(255,127,80),(255,127,80),(255,127,80),(255,127,80),(255,127,80),(255,127,80),(255,127,80)]
-
+tempMag = [(255, 0,255),(255, 0,255),(255, 0,255),(255, 0,255)]
+tempMag1 = [(255, 0,255),(255, 0,255),(255, 0,255),(255, 0,255)]
+tempMag2 = [(255, 0,255),(255, 0,255),(255, 0,255),(255, 0,255)]
+tempMag3 = [(255, 0,255),(255, 0,255),(255, 0,255),(255, 0,255)]
 magenta = 255,0,255
 width = 62
 height = 80
@@ -41,7 +44,9 @@ def musicRooms():
     global timer
     timer += 1
     print(timer)
+    global sy
     global tempPurp
+    global tempMag
     global purple
     global purple1
     global purple2
@@ -56,6 +61,7 @@ def musicRooms():
 
     x = 220
     y = 230
+    sy = 330
     bassR1 = [1,2,3,4]
     mousePos = pygame.mouse.get_pos()
     if gameState == 'game':
@@ -107,26 +113,25 @@ def musicRooms():
         if timer > 1000:
             tempPurp[8] = 255,127,80
             tempPurp[9] = 230, 0, 0
-        if timer > 1100:
+        if timer > 1200:
             tempPurp[9] = 255,127,80
             tempPurp[10] = 230, 0, 0
-        if timer > 1200:
+        if timer > 1300:
             tempPurp[10] = 255,127,80
             tempPurp[11] = 230, 0, 0
-        if timer > 1300:
+        if timer > 1400:
             tempPurp[11] = 255,127,80
             tempPurp[12] = 230, 0, 0
-        if timer > 1400:
+        if timer > 1500:
             tempPurp[12] = 255,127,80
             tempPurp[13] = 230, 0, 0
-        if timer > 1500:
+        if timer > 1600:
             tempPurp[13] = 255,127,80
             tempPurp[14] = 230, 0, 0
-        if timer > 1600:
+        if timer > 1700:
             tempPurp[14] = 255,127,80
             tempPurp[15] = 230, 0, 0
-        if timer > 1700:
-            tempPurp[15] = 255,127,80
+        if timer > 1790:
             timer = 100
 
 
@@ -137,11 +142,11 @@ def musicRooms():
         bass12 = [(x+548,y,width,height),(x+614,y,width,height),(x+680,y,width,height),(x+746,y,width,height)]
         bass16 = [(x+822,y,width,height),(x+888,y,width,height),(x+954,y,width,height),(x+1020,y,width,height)]
 
-        snareBar = pygame.draw.rect(screen, purple, pygame.Rect(30,330, 170,80))
-        snare4 = [(x,y,width,height),(x+66,y,width,height),(x+132,y,width,height),(x+198,y,width,height)]
-        snare8 = [(x+274,y,width,height),(x+340,y,width,height),(x+406,y,width,height),(x+472,y,width,height)]
-        snare12 = [(x+548,y,width,height),(x+614,y,width,height),(x+680,y,width,height),(x+746,y,width,height)]
-        snare16 = [(x+822,y,width,height),(x+888,y,width,height),(x+954,y,width,height),(x+1020,y,width,height)]
+        snareBar = pygame.draw.rect(screen, purple, pygame.Rect(30,sy, 170,80))
+        snare4 = [(x,sy,width,height),(x+66,sy,width,height),(x+132,sy,width,height),(x+198,sy,width,height)]
+        snare8 = [(x+274,sy,width,height),(x+340,sy,width,height),(x+406,sy,width,height),(x+472,sy,width,height)]
+        snare12 = [(x+548,sy,width,height),(x+614,sy,width,height),(x+680,sy,width,height),(x+746,sy,width,height)]
+        snare16 = [(x+822,sy,width,height),(x+888,sy,width,height),(x+954,sy,width,height),(x+1020,sy,width,height)]
 
         highHatBar = pygame.draw.rect(screen, purple, pygame.Rect(30,430, 170,80))
         openHighBar = pygame.draw.rect(screen, purple, pygame.Rect(30,530, 170,80))
@@ -161,10 +166,8 @@ def musicRooms():
             pygame.draw.rect(screen,purpleL2[i],bass16[i])
 
 
-        #if event.type == pygame.MOUSEMOTION:
-            ##
+        #Adding collision to the bass sequencer
         if pygame.mouse.get_pressed()[0]:
-
             if mouse_pos[0] in list(range(220, 280)) and mouse_pos[1] in list(range(230, 310)):
                 if purple1 == (159, 43, 104):
                     purple1 = 0, 43, 104
@@ -307,6 +310,157 @@ def musicRooms():
                 if purpleL2[3] == (0, 43, 104):
                     purpleL2[3] = 159, 43, 104
 
+        #Collision to snare sequencer
+        for i in range(4):
+            pygame.draw.rect(screen,tempMag[i],snare4[i])
+        for i in range(4):
+            pygame.draw.rect(screen,tempMag1[i],snare8[i])
+        for i in range(4):
+            pygame.draw.rect(screen,tempMag2[i],snare12[i])
+        for i in range(4):
+            pygame.draw.rect(screen,tempMag3[i],snare16[i])
+
+        if pygame.mouse.get_pressed()[0]:
+            if mouse_pos[0] in list(range(220, 280)) and mouse_pos[1] in list(range(sy, sy+80)):
+                if tempMag[0] == (255, 0,255):
+                    tempMag[0] = 242, 82, 120
+        if pygame.mouse.get_pressed()[2]:
+            if mouse_pos[0] in list(range(220, 280)) and mouse_pos[1] in list(range(sy, sy+80)):
+                if tempMag[0] == (242, 82, 120):
+                    tempMag[0] = 255, 0,255
+
+        if pygame.mouse.get_pressed()[0]:
+            if mouse_pos[0] in list(range(220+66, 280+66)) and mouse_pos[1] in list(range(sy, sy+80)):
+                if tempMag[1] == (255, 0,255):
+                    tempMag[1] = 242, 82, 120
+        if pygame.mouse.get_pressed()[2]:
+            if mouse_pos[0] in list(range(220+66, 280+66)) and mouse_pos[1] in list(range(sy, sy+80)):
+                if tempMag[1] == (242, 82, 120):
+                    tempMag[1] = 255, 0,255
+
+        if pygame.mouse.get_pressed()[0]:
+            if mouse_pos[0] in list(range(220+132, 280+132)) and mouse_pos[1] in list(range(sy, sy+80)):
+                if tempMag[2] == (255, 0,255):
+                    tempMag[2] = 242, 82, 120
+        if pygame.mouse.get_pressed()[2]:
+            if mouse_pos[0] in list(range(220+132, 280+132)) and mouse_pos[1] in list(range(sy, sy+80)):
+                if tempMag[2] == (242, 82, 120):
+                    tempMag[2] = 255, 0,255
+
+        if pygame.mouse.get_pressed()[0]:
+            if mouse_pos[0] in list(range(220+198, 280+198)) and mouse_pos[1] in list(range(sy, sy+80)):
+                if tempMag[3] == (255, 0,255):
+                    tempMag[3] = 242, 82, 120
+        if pygame.mouse.get_pressed()[2]:
+            if mouse_pos[0] in list(range(220+198, 280+198)) and mouse_pos[1] in list(range(sy, sy+80)):
+                if tempMag[3] == (242, 82, 120):
+                    tempMag[3] = 255, 0,255
+
+        if pygame.mouse.get_pressed()[0]:
+            if mouse_pos[0] in list(range(220+274, 280+274)) and mouse_pos[1] in list(range(sy, sy+80)):
+                if tempMag1[0] == (255, 0,255):
+                    tempMag1[0] = 242, 82, 120
+        if pygame.mouse.get_pressed()[2]:
+            if mouse_pos[0] in list(range(220+274, 280+274)) and mouse_pos[1] in list(range(sy, sy+80)):
+                if tempMag1[0] == (242, 82, 120):
+                    tempMag1[0] = 255, 0,255
+        if pygame.mouse.get_pressed()[0]:
+            if mouse_pos[0] in list(range(220+340, 280+340)) and mouse_pos[1] in list(range(sy, sy+80)):
+                if tempMag1[1] == (255, 0,255):
+                    tempMag1[1] = 242, 82, 120
+        if pygame.mouse.get_pressed()[2]:
+            if mouse_pos[0] in list(range(220+340, 280+340)) and mouse_pos[1] in list(range(sy, sy+80)):
+                if tempMag1[1] == (242, 82, 120):
+                    tempMag1[1] = 255, 0,255
+        if pygame.mouse.get_pressed()[0]:
+            if mouse_pos[0] in list(range(220+406, 280+406)) and mouse_pos[1] in list(range(sy, sy+80)):
+                if tempMag1[2] == (255, 0,255):
+                    tempMag1[2] = 242, 82, 120
+        if pygame.mouse.get_pressed()[2]:
+            if mouse_pos[0] in list(range(220+406, 280+406)) and mouse_pos[1] in list(range(sy, sy+80)):
+                if tempMag1[2] == (242, 82, 120):
+                    tempMag1[2] = 255, 0,255
+
+        if pygame.mouse.get_pressed()[0]:
+            if mouse_pos[0] in list(range(220+472, 280+472)) and mouse_pos[1] in list(range(sy, sy+80)):
+                if tempMag1[3] == (255, 0,255):
+                    tempMag1[3] = 242, 82, 120
+        if pygame.mouse.get_pressed()[2]:
+            if mouse_pos[0] in list(range(220+472, 280+472)) and mouse_pos[1] in list(range(sy, sy+80)):
+                if tempMag1[3] == (242, 82, 120):
+                    tempMag1[3] = 255, 0,255
+
+        if pygame.mouse.get_pressed()[0]:
+            if mouse_pos[0] in list(range(220+548, 280+548)) and mouse_pos[1] in list(range(sy, sy+80)):
+                if tempMag1[0] == (255, 0,255):
+                    tempMag1[0] = 242, 82, 120
+        if pygame.mouse.get_pressed()[2]:
+            if mouse_pos[0] in list(range(220+548, 280+548)) and mouse_pos[1] in list(range(sy, sy+80)):
+                if tempMag1[0] == (242, 82, 120):
+                    tempMag1[0] = 255, 0,255
+
+        if pygame.mouse.get_pressed()[0]:
+            if mouse_pos[0] in list(range(220+614, 280+614)) and mouse_pos[1] in list(range(sy, sy+80)):
+                if tempMag1[1] == (255, 0,255):
+                    tempMag1[1] = 242, 82, 120
+        if pygame.mouse.get_pressed()[2]:
+            if mouse_pos[0] in list(range(220+614, 280+614)) and mouse_pos[1] in list(range(sy, sy+80)):
+                if tempMag1[1] == (242, 82, 120):
+                    tempMag1[1] = 255, 0,255
+
+        if pygame.mouse.get_pressed()[0]:
+            if mouse_pos[0] in list(range(220+680, 280+680)) and mouse_pos[1] in list(range(sy, sy+80)):
+                if tempMag1[2] == (255, 0,255):
+                    tempMag1[2] = 242, 82, 120
+        if pygame.mouse.get_pressed()[2]:
+            if mouse_pos[0] in list(range(220+680, 280+680)) and mouse_pos[1] in list(range(sy, sy+80)):
+                if tempMag1[2] == (242, 82, 120):
+                    tempMag1[2] = 255, 0,255
+
+        if pygame.mouse.get_pressed()[0]:
+            if mouse_pos[0] in list(range(220+746, 280+746)) and mouse_pos[1] in list(range(sy, sy+80)):
+                if tempMag1[3] == (255, 0,255):
+                    tempMag1[3] = 242, 82, 120
+        if pygame.mouse.get_pressed()[2]:
+            if mouse_pos[0] in list(range(220+746, 280+746)) and mouse_pos[1] in list(range(sy, sy+80)):
+                if tempMag1[3] == (242, 82, 120):
+                    tempMag1[3] = 255, 0,255
+
+        if pygame.mouse.get_pressed()[0]:
+            if mouse_pos[0] in list(range(220+822, 280+822)) and mouse_pos[1] in list(range(sy, sy+80)):
+                if tempMag2[0] == (255, 0,255):
+                    tempMag2[0] = 242, 82, 120
+        if pygame.mouse.get_pressed()[2]:
+            if mouse_pos[0] in list(range(220+822, 280+822)) and mouse_pos[1] in list(range(sy, sy+80)):
+                if tempMag2[0] == (242, 82, 120):
+                    tempMag2[0] = 255, 0,255
+
+        if pygame.mouse.get_pressed()[0]:
+            if mouse_pos[0] in list(range(220+888, 280+888)) and mouse_pos[1] in list(range(sy, sy+80)):
+                if tempMag2[1] == (255, 0,255):
+                    tempMag2[1] = 242, 82, 120
+        if pygame.mouse.get_pressed()[2]:
+            if mouse_pos[0] in list(range(220+888, 280+888)) and mouse_pos[1] in list(range(sy, sy+80)):
+                if tempMag2[1] == (242, 82, 120):
+                    tempMag2[1] = 255, 0,255
+
+        if pygame.mouse.get_pressed()[0]:
+            if mouse_pos[0] in list(range(220+954, 280+954)) and mouse_pos[1] in list(range(sy, sy+80)):
+                if tempMag2[2] == (255, 0,255):
+                    tempMag2[2] = 242, 82, 120
+        if pygame.mouse.get_pressed()[2]:
+            if mouse_pos[0] in list(range(220+954, 280+954)) and mouse_pos[1] in list(range(sy, sy+80)):
+                if tempMag2[2] == (242, 82, 120):
+                    tempMag2[2] = 255, 0,255
+
+        if pygame.mouse.get_pressed()[0]:
+            if mouse_pos[0] in list(range(220+1020, 280+1020)) and mouse_pos[1] in list(range(sy, sy+80)):
+                if tempMag2[3] == (255, 0,255):
+                    tempMag2[3] = 242, 82, 120
+        if pygame.mouse.get_pressed()[2]:
+            if mouse_pos[0] in list(range(220+954, 280+954)) and mouse_pos[1] in list(range(sy, sy+80)):
+                if tempMag2[3] == (242, 82, 120):
+                    tempMag2[3] = 255, 0,255
 
 
         pygame.display.flip()
