@@ -107,25 +107,26 @@ def musicRooms():
         if timer > 1000:
             tempPurp[8] = 255,127,80
             tempPurp[9] = 230, 0, 0
-        if timer > 1200:
+        if timer > 1100:
             tempPurp[9] = 255,127,80
             tempPurp[10] = 230, 0, 0
-        if timer > 1300:
+        if timer > 1200:
             tempPurp[10] = 255,127,80
             tempPurp[11] = 230, 0, 0
-        if timer > 1400:
+        if timer > 1300:
             tempPurp[11] = 255,127,80
             tempPurp[12] = 230, 0, 0
-        if timer > 1500:
+        if timer > 1400:
             tempPurp[12] = 255,127,80
             tempPurp[13] = 230, 0, 0
-        if timer > 1600:
+        if timer > 1500:
             tempPurp[13] = 255,127,80
             tempPurp[14] = 230, 0, 0
-        if timer > 1700:
+        if timer > 1600:
             tempPurp[14] = 255,127,80
             tempPurp[15] = 230, 0, 0
-        if timer > 1790:
+        if timer > 1700:
+            tempPurp[15] = 255,127,80
             timer = 100
 
 
