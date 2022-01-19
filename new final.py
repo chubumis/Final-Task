@@ -3,7 +3,8 @@ pygame.init()
 display_w = 1400
 display_h = 800
 
-#snare_sound = pygame.mixer.Sound("snare.wav")
+
+
 snare_sound = pygame.mixer.Sound("snare.wav")
 high_sound = pygame.mixer.Sound("high.wav")
 openHigh_sound = pygame.mixer.Sound("openHigh.wav")
@@ -11,6 +12,8 @@ bass_sound = pygame.mixer.Sound("bass.wav")
 tom_sound = pygame.mixer.Sound("tom.wav")
 
 dark_red = 180, 0, 0
+endRed = 250,0,0
+clearBlue = 44,120,255
 light_red = 230, 0, 0
 black = 0, 0, 0
 yellow = 255,140,0
@@ -18,7 +21,7 @@ gold = 211, 175, 55
 orange = 255,99,71
 Mag = 255, 0,255
 blue = 44,120,255
-green = 7,209,0
+startGreen = 50,255,100
 purple = 159, 43, 104
 white = 255, 255, 255
 purple1 = 159, 43, 104
@@ -50,6 +53,7 @@ magenta = 255,0,255
 width = 62
 height = 80
 timer = 0
+play = False
 
 screen = pygame.display.set_mode((display_w, display_h))
 #pictures
@@ -58,7 +62,13 @@ gameState = 'game'
 def musicRooms():
     global tempo
     global timer
-    timer += tempo
+    global play
+    global startGreen
+    if play == False:
+        timer = 0
+    if play == True:
+        timer += tempo
+
     #print(timer)
     print(tempo)
     global sy
@@ -69,9 +79,14 @@ def musicRooms():
     global purple2
     global purple3
     global purple4
+    global purpleL
     global clicked
     global i
+    global endRed
+    global clearBlue
     global mouse_pos
+    green = 7,209,0
+
     x = 220
     y = 230
     sy = 330
@@ -100,6 +115,9 @@ def musicRooms():
         tempoBar_15 = pygame.draw.rect(screen, tempPurp[14], pygame.Rect(1176,150, 62,25))
         tempoBar_16 = pygame.draw.rect(screen, tempPurp[15], pygame.Rect(1242,150, 62,25))
         tempoButton = pygame.draw.rect(screen, orange, pygame.Rect(30, 130, 170, 75))
+        startButton = pygame.draw.rect(screen, startGreen, pygame.Rect(1000, 50, 150, 55))
+        endButton = pygame.draw.rect(screen, endRed, pygame.Rect(1210, 50, 150, 55))
+        clearButton = pygame.draw.rect(screen, clearBlue, pygame.Rect(110, 50, 150, 55))
 
         if timer == 101:
             if tempMag[0] == (242, 82, 120):
@@ -349,13 +367,57 @@ def musicRooms():
 
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if mouse_pos[0] in list(range(30, 200)) and mouse_pos[1] in list(range(130, 206)):
-                    tempo+=1
-                #if tempo > 2:
-                   # tempo = 1
-        if timer < 200:
+                #mouse collision for restarting the music
+                if mouse_pos[0] in list(range(1000, 1150)) and mouse_pos[1] in list(range(50, 100)):
+                    play = True
+                #mouse collision for stopping the music
+                if mouse_pos[0] in list(range(1210, 1360)) and mouse_pos[1] in list(range(50, 100)):
+                    play = False
+                #mouse collision for clear all music
+                if mouse_pos[0] in list(range(110, 260)) and mouse_pos[1] in list(range(50, 100)):
+                    purple1 = 159, 43, 104
+                    purple2 = 159, 43, 104
+                    purple3 = 159, 43, 104
+                    purple4 = 159, 43, 104
+                    for i in range(len(purpleL and purpleL1 and purpleL2 and tempMag and tempMag1 and tempMag2 and tempMag3 and tempGreen and tempGreen1 and tempGreen2 and tempGreen3)):
+                        purpleL[i] = 159, 43, 104
+                        purpleL1[i] = 159, 43, 104
+                        purpleL2[i] = 159, 43, 104
+                        tempMag[i] = 255, 0,255
+                        tempMag1[i] = 255, 0,255
+                        tempMag2[i] = 255, 0,255
+                        tempMag3[i] = 255, 0,255
+                        tempGreen[i] = 7,209,0
+                        tempGreen1[i] = 7,209,0
+                        tempGreen2[i] = 7,209,0
+                        tempGreen3[i] = 7,209,0
+                    for i in range(len(tempBlue and tempBlue1 and tempBlue2 and tempBlue3 and tempOrg and tempOrg1 and tempOrg2 and tempOrg3)):
+                        tempBlue[i] = 44,120,255
+                        tempBlue1[i] = 44,120,255
+                        tempBlue2[i] = 44,120,255
+                        tempBlue3[i] = 44,120,255
+                        tempOrg[i] = 255,99,71
+                        tempOrg1[i] = 255,99,71
+                        tempOrg2[i] = 255,99,71
+                        tempOrg3[i] = 255,99,71
+            elif event.type == pygame.MOUSEMOTION:
+                if mouse_pos[0] in list(range(1000, 1150)) and mouse_pos[1] in list(range(50, 100)):
+                    startGreen = 0,255,0
+                else:
+                    startGreen = 50,255,100
+                if mouse_pos[0] in list(range(1210, 1360)) and mouse_pos[1] in list(range(50, 100)):
+                    endRed = 100,0,0
+                else:
+                    endRed = 255,0,0
+                if mouse_pos[0] in list(range(110, 260)) and mouse_pos[1] in list(range(50, 100)):
+                    clearBlue = 0,0,255
+                else:
+                    clearBlue = 44,120,255
+
+
+
+        if timer > 100:
             tempPurp[0] = 230, 0, 0
-            print('hi')
         if timer > 200:
             tempPurp[0] = 255,127,80
             tempPurp[1] = 230, 0, 0
@@ -449,8 +511,7 @@ def musicRooms():
             pygame.draw.rect(screen,purpleL1[i],bass12[i])
         for i in range(4):
             pygame.draw.rect(screen,purpleL2[i],bass16[i])
-        #if event.type == pygame.MOUSEMOTION:
-            ##
+        #bass drum color changes
         if pygame.mouse.get_pressed()[0]:
             if mouse_pos[0] in list(range(220, 280)) and mouse_pos[1] in list(range(230, 310)):
                 if purple1 == (159, 43, 104):
