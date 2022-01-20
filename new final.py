@@ -204,6 +204,10 @@ width = 62
 height = 80
 timer = 0
 play = False
+noteY = 250
+note2Y = 180
+moveY = -5
+move2Y = 5
 
 
 screen = pygame.display.set_mode((display_w, display_h))
@@ -216,6 +220,10 @@ def musicRooms():
     global timer
     global play
     global startGreen
+    global noteY
+    global note2Y
+    global moveY
+    global move2Y
     '''if play == False:
         timer = 0
     if play == True:
@@ -1457,10 +1465,25 @@ def musicRooms():
     if gameState == 'startScreen':
         global startYellow
         global helpYellow
+        noteY += moveY
+        note2Y += move2Y
+        #note2Y += 5
+        if noteY < 20:
+            move2Y = -5
+            moveY = 5
+            print('hi')
+        if noteY > 350:
+            move2Y = 5
+            moveY = -5
+        print(noteY)
         mouse_pos = pygame.mouse.get_pos()
         screen.fill(grey)
         Title = pygame.image.load('musicMachine.png')
         screen.blit(Title, (0,0))
+        musicNote = pygame.image.load("musicNote.png")
+        screen.blit(musicNote,(10,noteY))
+        secondNote = pygame.image.load("secondNote.png")
+        screen.blit(secondNote,(1000,note2Y))
         play = pygame.draw.rect(screen, startYellow, pygame.Rect(545, 275, 290, 75))
         play2 = pygame.draw.rect(screen, helpYellow, pygame.Rect(545, 415, 290, 75))
         start_group.draw(screen)
