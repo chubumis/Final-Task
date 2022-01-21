@@ -287,17 +287,18 @@ def musicRooms():
         #-----------buttons for various of controls through out the sound board--------------------#
         startButton = pygame.draw.rect(screen, startGreen, pygame.Rect(1000, 50, 150, 55))#starts the tempo bars
         endButton = pygame.draw.rect(screen, endRed, pygame.Rect(1210, 50, 150, 55))#stops the tempo bars
-        clearButton = pygame.draw.rect(screen, clearBlue, pygame.Rect(110, 50, 150, 55))#clears the music buttons
+
         bassButton = pygame.draw.rect(screen, yellow, pygame.Rect(310, 50, 150, 55))#adds stead beat
         menuButton = pygame.draw.rect(screen, menuOrange, pygame.Rect(680, 50, 150, 55))#goes back to main screen
         #draws the needed buttons
-        cursor_group.draw(screen)
+
         button_group.draw(screen)
         stop_group.draw(screen)
         clear_group.draw(screen)
         steady_group.draw(screen)
         menuB_group.draw(screen)
-        cursor_group.update()
+        #cursor_group.draw(screen)
+        #cursor_group.update()
 
 #--Block of code underneath makes it so when the timer hits the specific time and the music button is turned on by being a specific color make that assigned sound effect--#
         if timer == 110:#if timer is this time and button is this color make a snare sound
@@ -1462,10 +1463,14 @@ def musicRooms():
         screen.blit(bassB, (310,52))#label steady bass button
         clearB = pygame.image.load('clearB.png')
         screen.blit(clearB, (113,52))#label clear all button
+        clearButton = pygame.draw.rect(screen, clearBlue, pygame.Rect(110, 50, 150, 55))#clears the music buttons
+
         startB = pygame.image.load('startB.png')
         screen.blit(startB, (1002,52))#label start button
         stopB = pygame.image.load('stopB.png')
         screen.blit(stopB, (1215,52))#label stop button
+        cursor_group.draw(screen)
+        cursor_group.update()
         pygame.display.flip()
 
 #############GameState for start screen########
