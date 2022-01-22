@@ -10,16 +10,13 @@ display_h = 800
 class Mouse(pygame.sprite.Sprite):
     '''
     Makes a rect for the mouse
-
     Takes in cordinate of the cursor and follows
     it so it can click various of buttons.
-
     Parameters
     ----------
     pygame.sprite.Sprite = image
     Takes an image and makes it into a
     sprite.
-
     returns
     -------
     None
@@ -27,14 +24,11 @@ class Mouse(pygame.sprite.Sprite):
     def __init__(self,picture_path):
         '''
         Add the picture to the object
-
         Loads an image and puts it in obect.
-
         Parameters
         ----------
         self = self represents the instance of the class
         picture_path = loads the image
-
         returns
         -------
         None
@@ -48,13 +42,10 @@ class Mouse(pygame.sprite.Sprite):
         self.rect.center = pygame.mouse.get_pos()
         '''
         Adds cordinates
-
         Gives cursor mouse cordinates.
-
         Parameters
         ----------
         self = self represents the instance of the class
-
         returns
         -------
         None
@@ -62,16 +53,13 @@ class Mouse(pygame.sprite.Sprite):
 class Button(pygame.sprite.Sprite):
     '''
     Makes sprite for buttons
-
     Creates various templates for
     different buttons.
-
     Parameters
     ----------
     pygame.sprite.Sprite = image
     Takes an image and makes it into a
     sprite.
-
     returns
     -------
     None
@@ -79,16 +67,13 @@ class Button(pygame.sprite.Sprite):
     def __init__(self,picture_path,pos_x,pos_y):
         '''
         Add the picture to the object
-
         Loads an image and puts it in obect
         and gives cordinates.
-
         Parameters
         ----------
         self = self represents the instance of the class
         picture_path = loads the image
         pos_x,pos_y = Gives sprites cordinates
-
         returns
         -------
         None
@@ -291,12 +276,13 @@ def musicRooms():
         bassButton = pygame.draw.rect(screen, yellow, pygame.Rect(310, 50, 150, 55))#adds stead beat
         menuButton = pygame.draw.rect(screen, menuOrange, pygame.Rect(680, 50, 150, 55))#goes back to main screen
         #draws the needed buttons
-        cursor_group.draw(screen)
+
         button_group.draw(screen)
         stop_group.draw(screen)
         clear_group.draw(screen)
         steady_group.draw(screen)
         menuB_group.draw(screen)
+        cursor_group.draw(screen)
         cursor_group.update()
 
 #--Block of code underneath makes it so when the timer hits the specific time and the music button is turned on by being a specific color make that assigned sound effect--#
@@ -547,74 +533,7 @@ def musicRooms():
 
 
 
-#--------------This for loop makes it whenever a control button in the sound board state is clicked make it do a certain action-------#
-        for event in pygame.event.get():
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                #mouse collision for restarting the music
-                if pygame.sprite.spritecollide(cursor,button_group,False): #when mouse clicks the green start button
-                    play = True #starts the tempo
-                #mouse collision for stopping the music
-                if pygame.sprite.spritecollide(cursor,stop_group,False):#when mouse clicks the red stop button
-                    play = False#stops the tempo
-                #mouse collision for clear all music
-                if pygame.sprite.spritecollide(cursor,clear_group,False):#when cursor clicks blue clear button it turns all the button to specific color de-activating them
-                    purple1 = 159, 43, 104
-                    purple2 = 159, 43, 104
-                    purple3 = 159, 43, 104
-                    purple4 = 159, 43, 104
-                    for i in range(len(purpleL and purpleL1 and purpleL2 and tempMag and tempMag1 and tempMag2 and tempMag3 and tempGreen and tempGreen1 and tempGreen2 and tempGreen3)):
-                        purpleL[i] = 159, 43, 104
-                        purpleL1[i] = 159, 43, 104
-                        purpleL2[i] = 159, 43, 104
-                        tempMag[i] = 255, 0,255
-                        tempMag1[i] = 255, 0,255
-                        tempMag2[i] = 255, 0,255
-                        tempMag3[i] = 255, 0,255
-                        tempGreen[i] = 7,209,0
-                        tempGreen1[i] = 7,209,0
-                        tempGreen2[i] = 7,209,0
-                        tempGreen3[i] = 7,209,0
-                    for i in range(len(tempBlue and tempBlue1 and tempBlue2 and tempBlue3 and tempOrg and tempOrg1 and tempOrg2 and tempOrg3)):
-                        tempBlue[i] = 44,120,255
-                        tempBlue1[i] = 44,120,255
-                        tempBlue2[i] = 44,120,255
-                        tempBlue3[i] = 44,120,255
-                        tempOrg[i] = 255,99,71
-                        tempOrg1[i] = 255,99,71
-                        tempOrg2[i] = 255,99,71
-                        tempOrg3[i] = 255,99,71
-                if pygame.mouse.get_pressed()[0]:
-                    if pygame.sprite.spritecollide(cursor,steady_group,False):
-                        pygame.mixer.music.play(-1)
-                if pygame.mouse.get_pressed()[2]:
-                    if pygame.sprite.spritecollide(cursor,steady_group,False):
-                        pygame.mixer.music.stop()
-                if pygame.sprite.spritecollide(cursor,menuB_group,False):
-                    pygame.mixer.Sound.play(click_sound)
-                    gameState = 'startScreen'
 
-#--This event makes it so when I hove the control button is the music board state it will change colors indication collision is happening with that button--#
-            elif event.type == pygame.MOUSEMOTION:
-                if mouse_pos[0] in list(range(1000, 1150)) and mouse_pos[1] in list(range(50, 100)):#indicating interaction with start button
-                    startGreen = 0,100,0
-                else:
-                    startGreen = 50,255,100
-                if mouse_pos[0] in list(range(1210, 1360)) and mouse_pos[1] in list(range(50, 100)):#indicating interaction with stop button
-                    endRed = 100,0,0
-                else:
-                    endRed = 255,0,0
-                if mouse_pos[0] in list(range(110, 260)) and mouse_pos[1] in list(range(50, 100)):#indicating interaction with clear button
-                    clearBlue = 0,0,255
-                else:
-                    clearBlue = 44,120,255
-                if mouse_pos[0] in list(range(310, 460)) and mouse_pos[1] in list(range(50, 100)):#indicating interaction with bass tempo button
-                    yellow = 184,184,0
-                else:
-                    yellow = 255,255,0
-                if mouse_pos[0] in list(range(680, 830)) and mouse_pos[1] in list(range(50, 100)):#indicating interaction with menu button
-                    menuOrange = 200,20,0
-                else:
-                    menuOrange = 255,99,71
 
 
 #---Associating tempo bar with the timer when its on. It shows the ryhtm/beats---#
@@ -1544,6 +1463,75 @@ while True:
             sys.exit()
     print(pygame.mouse.get_pos())
     musicRooms()#uses gamestates function
+    #--------------This for loop makes it whenever a control button in the sound board state is clicked make it do a certain action-------#
+    #this block has to be in the while true loop without a function as it becomes really laggy if i put it in a function
+    for event in pygame.event.get():
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                #mouse collision for restarting the music
+                if pygame.sprite.spritecollide(cursor,button_group,False): #when mouse clicks the green start button
+                    play = True #starts the tempo
+                #mouse collision for stopping the music
+                if pygame.sprite.spritecollide(cursor,stop_group,False):#when mouse clicks the red stop button
+                    play = False#stops the tempo
+                #mouse collision for clear all music
+                if pygame.sprite.spritecollide(cursor,clear_group,False):#when cursor clicks blue clear button it turns all the button to specific color de-activating them
+                    purple1 = 159, 43, 104
+                    purple2 = 159, 43, 104
+                    purple3 = 159, 43, 104
+                    purple4 = 159, 43, 104
+                    for i in range(len(purpleL and purpleL1 and purpleL2 and tempMag and tempMag1 and tempMag2 and tempMag3 and tempGreen and tempGreen1 and tempGreen2 and tempGreen3)):
+                        purpleL[i] = 159, 43, 104
+                        purpleL1[i] = 159, 43, 104
+                        purpleL2[i] = 159, 43, 104
+                        tempMag[i] = 255, 0,255
+                        tempMag1[i] = 255, 0,255
+                        tempMag2[i] = 255, 0,255
+                        tempMag3[i] = 255, 0,255
+                        tempGreen[i] = 7,209,0
+                        tempGreen1[i] = 7,209,0
+                        tempGreen2[i] = 7,209,0
+                        tempGreen3[i] = 7,209,0
+                    for i in range(len(tempBlue and tempBlue1 and tempBlue2 and tempBlue3 and tempOrg and tempOrg1 and tempOrg2 and tempOrg3)):
+                        tempBlue[i] = 44,120,255
+                        tempBlue1[i] = 44,120,255
+                        tempBlue2[i] = 44,120,255
+                        tempBlue3[i] = 44,120,255
+                        tempOrg[i] = 255,99,71
+                        tempOrg1[i] = 255,99,71
+                        tempOrg2[i] = 255,99,71
+                        tempOrg3[i] = 255,99,71
+                if pygame.mouse.get_pressed()[0]:
+                    if pygame.sprite.spritecollide(cursor,steady_group,False):
+                        pygame.mixer.music.play(-1)
+                if pygame.mouse.get_pressed()[2]:
+                    if pygame.sprite.spritecollide(cursor,steady_group,False):
+                        pygame.mixer.music.stop()
+                if pygame.sprite.spritecollide(cursor,menuB_group,False):
+                    pygame.mixer.Sound.play(click_sound)
+                    gameState = 'startScreen'
+
+#--This event makes it so when I hove the control button is the music board state it will change colors indication collision is happening with that button--#
+            elif event.type == pygame.MOUSEMOTION:
+                if mouse_pos[0] in list(range(1000, 1150)) and mouse_pos[1] in list(range(50, 100)):#indicating interaction with start button
+                    startGreen = 0,100,0
+                else:
+                    startGreen = 50,255,100
+                if mouse_pos[0] in list(range(1210, 1360)) and mouse_pos[1] in list(range(50, 100)):#indicating interaction with stop button
+                    endRed = 100,0,0
+                else:
+                    endRed = 255,0,0
+                if mouse_pos[0] in list(range(110, 260)) and mouse_pos[1] in list(range(50, 100)):#indicating interaction with clear button
+                    clearBlue = 0,0,255
+                else:
+                    clearBlue = 44,120,255
+                if mouse_pos[0] in list(range(310, 460)) and mouse_pos[1] in list(range(50, 100)):#indicating interaction with bass tempo button
+                    yellow = 184,184,0
+                else:
+                    yellow = 255,255,0
+                if mouse_pos[0] in list(range(680, 830)) and mouse_pos[1] in list(range(50, 100)):#indicating interaction with menu button
+                    menuOrange = 200,20,0
+                else:
+                    menuOrange = 255,99,71
     pygame.display.flip()
 
 pygame.quit()
