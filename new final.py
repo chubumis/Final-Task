@@ -762,7 +762,7 @@ def musicRooms():
                 if purpleL2[3] == (159, 43, 104):
                     purpleL2[3] = 0, 43, 104
         if pygame.mouse.get_pressed()[2]:#when right click bass drum turns off
-            if mouse_pos[0] in list(range(220+954, 280+954)) and mouse_pos[1] in list(range(230, 310)):
+            if mouse_pos[0] in list(range(220+1020, 280+1020)) and mouse_pos[1] in list(range(230, 310)):
                 if purpleL2[3] == (0, 43, 104):
                     purpleL2[3] = 159, 43, 104
     #Collision to snare sequencer
